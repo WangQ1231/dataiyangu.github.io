@@ -1,14 +1,3 @@
-/*点击文章后滚动到顶部*/
-function article_top() {
-    function top(){
-      var pathname = window.location.pathname
-      var height = $(".header").css("height");
-      if (pathname.indexOf("html")>0) {
-
-        $("html,article").animate({scrollTop:height},300)
-      }
-    }
-    setTimeout(top,800);
-
-  }
-  article_top();
+// build time:Thu Feb 07 2019 16:57:55 GMT+0800 (China Standard Time)
+function article_top(){function t(){var t=window.location.pathname;var i=$(".header").css("height");if(t.indexOf("html")>0){$("html,article").animate({scrollTop:i},300)}}setTimeout(t,800)}article_top();
+//rebuild by neat 
