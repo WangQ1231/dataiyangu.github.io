@@ -1,3 +1,3 @@
-// build time:Sat Mar 16 2019 00:18:53 GMT+0800 (China Standard Time)
+// build time:Sat Mar 16 2019 08:57:31 GMT+0800 (China Standard Time)
 function lazy(){$("img").lazyload({threshold:0,placeholder:"images/my_blog_0.png",effect:"fadeIn"})}lazy();
 //rebuild by neat 
