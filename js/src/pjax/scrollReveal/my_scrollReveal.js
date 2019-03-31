@@ -1,3 +1,3 @@
-// build time:Sun Mar 31 2019 19:29:46 GMT+0800 (China Standard Time)
+// build time:Sun Mar 31 2019 19:44:11 GMT+0800 (China Standard Time)
 var pathname=window.location.pathname;if(pathname.indexOf("html")<0){var config={reset:true,init:true};window.scrollReveal=new scrollReveal(config);scrollReveal.init()}
 //rebuild by neat 
