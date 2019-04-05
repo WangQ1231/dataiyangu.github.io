@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mmmmmm.me/hexo_er_lazy.html</loc>
+    
+    <lastmod>2019-04-05T15:04:19.076Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mmmmmm.me/hexo_yi_pjax.html</loc>
     
-    <lastmod>2019-03-31T14:59:26.016Z</lastmod>
+    <lastmod>2019-04-05T15:04:19.071Z</lastmod>
     
   </url>
   
@@ -40,13 +47,6 @@
     <loc>http://mmmmmm.me/hexo_ba_jiasu.html</loc>
     
     <lastmod>2019-03-31T11:53:15.867Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mmmmmm.me/hexo_er_lazy.html</loc>
-    
-    <lastmod>2019-03-31T11:53:15.862Z</lastmod>
     
   </url>
   
