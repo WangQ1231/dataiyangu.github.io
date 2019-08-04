@@ -1,3 +1,19 @@
-// build time:Sat Jun 22 2019 15:12:02 GMT+0800 (China Standard Time)
-function article_top(){function t(){var t=window.location.pathname;var i=$(".header").css("height");if(t.indexOf("html")>0){$("html,article").animate({scrollTop:i},300)}}setTimeout(t,800)}article_top();
-//rebuild by neat 
+/*点击文章后滚动到顶部*/
+function article_top() {
+    function top(){
+      var pathname = window.location.pathname
+      var total = $(".header").innerHeight();
+        // $(".header").css("padding-top")+
+        // $(".header").css("padding-left")+
+        // $(".header").css("padding-right")+
+        // $(".header").css("padding-bottom");
+      if (pathname.indexOf("html")>0) {
+
+        $("html,article").animate({scrollTop:total},300)
+      }
+    }
+    setTimeout(top,800);
+
+  }
+  
+  article_top();

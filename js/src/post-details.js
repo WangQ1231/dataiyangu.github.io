@@ -1,3 +1,130 @@
-// build time:Sat Jun 22 2019 15:12:02 GMT+0800 (China Standard Time)
-$(document).ready(function(){t();function t(){var t=".post-toc";var a=$(t);var e=".active-current";a.on("activate.bs.scrollspy",function(){var e=$(t+" .active").last();i();e.addClass("active-current");a.scrollTop(e.offset().top-a.offset().top+a.scrollTop()-a.height()/2)}).on("clear.bs.scrollspy",i);$("body").scrollspy({target:t});function i(){$(t+" "+e).removeClass(e.substring(1))}}});$(document).ready(function(){var t=$("html");var a=200;var e=$.isFunction(t.velocity);$(".sidebar-nav li").on("click",function(){var t=$(this);var i="sidebar-nav-active";var o="sidebar-panel-active";if(t.hasClass(i)){return}var s=$("."+o);var r=$("."+t.data("target"));e?s.velocity("transition.slideUpOut",a,function(){r.velocity("stop").velocity("transition.slideDownIn",a).addClass(o)}):s.animate({opacity:0},a,function(){s.hide();r.stop().css({opacity:0,display:"block"}).animate({opacity:1},a,function(){s.removeClass(o);r.addClass(o)})});t.siblings().removeClass(i);t.addClass(i)});$(".post-toc a").on("click",function(a){a.preventDefault();var i=NexT.utils.escapeSelector(this.getAttribute("href"));var o=$(i).offset().top;e?t.velocity("stop").velocity("scroll",{offset:o+"px",mobileHA:false}):$("html, body").stop().animate({scrollTop:o},500)});function i(){var t=navigator.userAgent;var a=["Android","iPhone","SymbianOS","Windows Phone","iPad","iPod"];var e=false;for(var i=0;i<a.length;i++){if(t.indexOf(a[i])>0){e=true;break}}var o=window.screen.width;var s=window.screen.height;if(o<500&&s<800){e=true}return e}var i=i();console.log(i);var o=$(".post-toc-content");var s=CONFIG.sidebar.display==="post"||CONFIG.sidebar.display==="always";var r=o.length>0&&o.html().trim().length>0;if(s&&r&&!i){CONFIG.motion.enable?NexT.motion.middleWares.sidebar=function(){NexT.utils.displaySidebar()}:NexT.utils.displaySidebar()}});
-//rebuild by neat 
+/* global NexT: true */
+
+$(document).ready(function () {
+
+  initScrollSpy();
+
+  function initScrollSpy () {
+    var tocSelector = '.post-toc';
+    var $tocElement = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocElement
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        // Scrolling to center active TOC element if TOC content is taller then viewport.
+        $tocElement.scrollTop($currentActiveElement.offset().top - $tocElement.offset().top + $tocElement.scrollTop() - ($tocElement.height() / 2));
+      })
+      .on('clear.bs.scrollspy', removeCurrentActiveClass);
+
+    $('body').scrollspy({ target: tocSelector });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+  }
+
+});
+
+$(document).ready(function () {
+  var html = $('html');
+  var TAB_ANIMATE_DURATION = 200;
+  var hasVelocity = $.isFunction(html.velocity);
+
+  $('.sidebar-nav li').on('click', function () {
+    var item = $(this);
+    var activeTabClassName = 'sidebar-nav-active';
+    var activePanelClassName = 'sidebar-panel-active';
+    if (item.hasClass(activeTabClassName)) {
+      return;
+    }
+
+    var currentTarget = $('.' + activePanelClassName);
+    var target = $('.' + item.data('target'));
+
+    hasVelocity ?
+      currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+        target
+          .velocity('stop')
+          .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+          .addClass(activePanelClassName);
+      }) :
+      currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+        currentTarget.hide();
+        target
+          .stop()
+          .css({'opacity': 0, 'display': 'block'})
+          .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+            currentTarget.removeClass(activePanelClassName);
+            target.addClass(activePanelClassName);
+          });
+      });
+
+    item.siblings().removeClass(activeTabClassName);
+    item.addClass(activeTabClassName);
+  });
+
+  // TOC item animation navigate & prevent #item selector in adress bar.
+  $('.post-toc a').on('click', function (e) {
+    e.preventDefault();
+    var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+    var offset = $(targetSelector).offset().top;
+
+    hasVelocity ?
+      html.velocity('stop').velocity('scroll', {
+        offset: offset  + 'px',
+        mobileHA: false
+      }) :
+      $('html, body').stop().animate({
+        scrollTop: offset
+      }, 500);
+  });
+
+//判断是否是mobile的函数
+  function isMobile() {
+    var userAgentInfo = navigator.userAgent;
+
+    var mobileAgents = [ "Android", "iPhone", "SymbianOS", "Windows Phone", "iPad","iPod"];
+
+    var mobile_flag = false;
+
+    //根据userAgent判断是否是手机
+    for (var v = 0; v < mobileAgents.length; v++) {
+      if (userAgentInfo.indexOf(mobileAgents[v]) > 0) {
+        mobile_flag = true;
+        break;
+      }
+    }
+
+    var screen_width = window.screen.width;
+    var screen_height = window.screen.height;
+
+    //根据屏幕分辨率判断是否是手机
+    if(screen_width < 500 && screen_height < 800){
+      mobile_flag = true;
+    }
+
+    return mobile_flag;
+  }
+
+
+  // Expand sidebar on post detail page by default, when post has a toc.
+  //判断是否是移动端
+  var isMobile = isMobile();
+  console.log(isMobile)
+  var $tocContent = $('.post-toc-content');
+  var isSidebarCouldDisplay = CONFIG.sidebar.display === 'post' ||
+      CONFIG.sidebar.display === 'always';
+  var hasTOC = $tocContent.length > 0 && $tocContent.html().trim().length > 0;
+  if (isSidebarCouldDisplay && hasTOC && !isMobile) {
+    CONFIG.motion.enable ?
+      (NexT.motion.middleWares.sidebar = function () {
+          NexT.utils.displaySidebar();
+      }) : NexT.utils.displaySidebar();
+  }
+});
