@@ -1,3 +1,3 @@
-// build time:Wed Aug 07 2019 19:41:35 GMT+0800 (China Standard Time)
+// build time:Fri Aug 09 2019 13:34:09 GMT+0800 (China Standard Time)
 define(["jquery.share.min"],function(){var e={sites:["weibo","qq","wechat","qzone","douban","facebook","google","twitter"],disabled:["linkedin","diandian"],wechatQrcodeTitle:"微信扫一扫",wechatQrcodeHelper:"<p>微信扫一扫，右上角分享</p>",source:"Leesin Dong"};$(".post-spread").share(e);function o(){$(".post-spread").share(e)}});
 //rebuild by neat 
