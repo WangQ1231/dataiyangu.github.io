@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mmmmmm.me/about/index.html</loc>
+    
+    <lastmod>2019-09-22T14:24:50.601Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mmmmmm.me/hexo_shi_jiami.html</loc>
     
     <lastmod>2019-08-14T11:30:09.561Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>http://mmmmmm.me/hexo_yi_pjax.html</loc>
     
     <lastmod>2019-08-14T11:29:18.886Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mmmmmm.me/about/index.html</loc>
-    
-    <lastmod>2019-08-04T05:32:05.209Z</lastmod>
     
   </url>
   
